@@ -1,18 +1,29 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Text, View } from 'react-native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-export const Main = props => {
+const Drawer = createDrawerNavigator();
+
+function DrawerContent() {
   return (
-    <View style={styles.container}>
-      <Text>Main.js</Text>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Drawer content</Text>
     </View>
-  )
+  );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
+function HomeScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+    </View>
+  );
+}
+
+export const Main = () => {
+  return (
+    <Drawer.Navigator drawerContent={() => <DrawerContent />}>
+      <Drawer.Screen name="Home" component={HomeScreen} />
+    </Drawer.Navigator>
+  );
+};
