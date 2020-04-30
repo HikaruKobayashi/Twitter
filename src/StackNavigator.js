@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Appbar, Avatar, useTheme } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import { Feed } from './Feed';
+import { BottomTabNavigator } from './BottomTabNavigator';
 import { Details } from './Details';
 
 const Stack = createStackNavigator();
@@ -40,8 +40,20 @@ const Header = ({ scene, previous, navigation }) => {
       )}
       <Appbar.Content
         title={
-          previous ? title : <MaterialCommunityIcons name='twitter' size={40} />
+          title === 'Feed' ? (
+            <MaterialCommunityIcons
+              style={{ marginRight:10 }}
+              name='twitter'
+              size={40}
+            />
+          ) : (
+            title
+          )
         }
+        titleStyle={{
+          fontSize: 18,
+          fonstWeight: 'bold',
+        }}
       />
     </Appbar.Header>
   )
@@ -60,8 +72,13 @@ export const StackNavigator = props => {
     >
       <Stack.Screen
         name="Feed"
-        component={Feed}
-        options={{ headerTitle: 'Twitter' }}
+        component={BottomTabNavigator}
+        options={({ route }) => {
+          const routeName = route.state
+            ? route.state.routes[route.state.index].name
+            : 'Feed';
+          return {headerTitle: routeName};
+        }}
       />
       <Stack.Screen
         name="Details"
@@ -71,11 +88,3 @@ export const StackNavigator = props => {
     </Stack.Navigator>
   );
 };
-
-const styles = StyleSheet.create({
-    container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
-  }
-})
