@@ -2,6 +2,8 @@ import React from 'react';
 import { creteMaterialBottomTabNavigator, createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { useTheme, Portal, FAB } from 'react-native-paper';
 import color from 'color';
+import { useIsFocused } from '@react-navigation/native';
+import { useSafeArea } from 'react-native-safe-area-context';
 
 import { Feed } from './Feed';
 import { Messages } from './Messages';
@@ -9,11 +11,27 @@ import { Notifications } from './Notifications';
 
 const Tab = createMaterialBottomTabNavigator();
 
-export const BottomTabNavigator = () => {
+export const BottomTabNavigator = props => {
+  const safeArea = useSafeArea();
+  const isFocused = useIsFocused();
   const theme = useTheme();
   const tabBarColor = theme.dark
   ? overlay(6, theme.colors.surface)
   : theme.colors.surface
+
+  const routeName = props.route.state
+  ? props.route.state.routes[props.route.state.index].name
+  : 'Feed';
+
+  let icon = 'feather';
+  switch (routeName) {
+    case 'Messages':
+      icon = 'email-plus-outline';
+    break;
+    default:
+      icon = 'feather';
+    break;
+  }
 
   return (
     <React.Fragment>
@@ -53,12 +71,20 @@ export const BottomTabNavigator = () => {
       </Tab.Navigator>
       <Portal>
         <FAB
-          icon='feather'
+          visible={isFocused}
+          icon={icon}
           style={{
             position: 'absolute',
-            bottom: 100,
+            bottom: safeArea.bottom + 65,
             right: 16
           }}
+          color='white'
+          theme={{
+            colors: {
+              accent: theme.colors.text
+            }
+          }}
+          onPress={() => {}}
         />
       </Portal>
     </React.Fragment>
