@@ -48,7 +48,9 @@ export function DrawerContent(props) {
               />
             )}
             label="Profile"
-            onPress={() => {}}
+            onPress={() => {
+              
+            }}
           />
           <DrawerItem
             icon={({ color, size }) => (

@@ -6,6 +6,7 @@ import { useIsFocused } from '@react-navigation/native';
 import { useSafeArea } from 'react-native-safe-area-context';
 
 import { Feed } from './Feed';
+import { Search } from './Search';
 import { Messages } from './Messages';
 import { Notifications } from './Notifications';
 
@@ -52,6 +53,13 @@ export const BottomTabNavigator = props => {
           component={Feed}
           options={{
             tabBarIcon: 'home-account', tabBarColor
+          }}
+        />
+        <Tab.Screen
+          name="Search"
+          component={Search}
+          options={{
+            tabBarIcon: 'account-search', tabBarColor
           }}
         />
         <Tab.Screen
