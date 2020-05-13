@@ -7,7 +7,8 @@ import { useSafeArea } from 'react-native-safe-area-context';
 
 import { Feed } from './Feed';
 import { Search } from './Search';
-import { Messages } from './Messages';
+// export default ~と書く場合は{}を使用しない。
+import Messages from './Messages';
 import { Notifications } from './Notifications';
 
 const Tab = createMaterialBottomTabNavigator();
