@@ -6,7 +6,7 @@ import color from 'color';
 
 import { Feed } from './Feed';
 import { Trend } from './Trend';
-import { News } from './News';
+import News from './News';
 // import { Sports } from './Sports';
 // import { Humor } from './Humor';
 
