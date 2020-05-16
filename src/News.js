@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, FlatList, SafeAreaView } from 'react-native';
-import { API_key } from 'react-native-dotenv'
 import Article from './components/Article';
 
 export default class News extends React.Component {
@@ -12,7 +11,7 @@ export default class News extends React.Component {
   getNews = async() => {
     this.setState({ refreshing: true });
     // APIからJSONを取得する
-    const url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=API_key";
+    const url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=APIkey";
     try {
       const result = await fetch(url);
       const json = await result.json();
