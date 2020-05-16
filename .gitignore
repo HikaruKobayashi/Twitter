@@ -12,3 +12,6 @@ web-report/
 
 # macOS
 .DS_Store
+
+# API管理
+.env
