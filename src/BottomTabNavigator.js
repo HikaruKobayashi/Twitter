@@ -7,7 +7,7 @@ import { useSafeArea } from 'react-native-safe-area-context';
 
 import { Feed } from './Feed';
 import { Search } from './Search';
-// export default ~と書く場合は{}を使用しない。
+// export default class ~と書く場合は{}を使用しない。
 import Messages from './Messages';
 import { Notifications } from './Notifications';
 
