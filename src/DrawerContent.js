@@ -12,7 +12,8 @@ import {
   Switch
 } from "react-native-paper";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-export function DrawerContent(props) {
+
+export const DrawerContent = props => {
   return (
     <DrawerContentScrollView {...props}>
       <View style={styles.drawerContent}>
