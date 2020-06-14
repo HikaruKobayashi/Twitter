@@ -15,4 +15,4 @@ web-report/
 
 # API管理
 .env
-firebase/config.js
+config.js
