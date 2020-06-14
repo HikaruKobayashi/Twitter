@@ -15,4 +15,3 @@ web-report/
 
 # API管理
 .env
-config.js
