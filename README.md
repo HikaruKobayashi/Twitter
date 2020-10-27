@@ -2,7 +2,7 @@
 
 React NativeのでTwitterを作成する。
 
-## 使用技術
+## 技術
 React Native
 
 ## 使い方
